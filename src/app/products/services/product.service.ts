@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Product } from '../models/product'
+import { environment } from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,6 @@ export class ProductService {
   }
 
   save(product: Product) {
-    return this.http.post<Product>('/api/products', product)
+    return this.http.post<Product>(`${environment.apiUrl}/products`, product)
   }
 }
