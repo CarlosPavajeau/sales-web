@@ -1,0 +1,25 @@
+<mat-card *ngIf="customer$ | async as customer">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{ customer.name }}</h2>
+      <h3>{{ customer.lastName }}</h3>
+    </mat-card-title>
+    <mat-card-subtitle>{{ customer.email }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>Direcciones</p>
+    <ul>
+      <li *ngFor="let address of customer.addresses">
+        {{address.state}}, {{address.city}}, {{address.street}} - {{address.zip}}
+      </li>
+    </ul>
+
+    <p>Telefonos</p>
+    <ul>
+      <li *ngFor="let phone of customer.phoneNumbers">
+        {{ phone.number }}
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>

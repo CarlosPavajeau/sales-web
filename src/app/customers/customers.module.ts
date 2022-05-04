@@ -6,12 +6,15 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http'
-import { CustomersRoutingModule } from './customers-routing.module'
+import { CustomersRoutingModule } from './customers-routing.module';
+import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component'
+import { MatCardModule } from '@angular/material/card'
 
 
 @NgModule({
   declarations: [
-    RegisterCustomerComponent
+    RegisterCustomerComponent,
+    CustomerDetailComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +23,8 @@ import { CustomersRoutingModule } from './customers-routing.module'
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ]
 })
 export class CustomersModule {
