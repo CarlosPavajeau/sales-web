@@ -1,8 +1,7 @@
-<mat-card *ngIf="customer$ | async as customer">
+<mat-card *ngIf="customer$ | async as customer" class="detail-card mat-elevation-z3">
   <mat-card-header>
     <mat-card-title>
-      <h2>{{ customer.name }}</h2>
-      <h3>{{ customer.lastName }}</h3>
+      <h2>{{ customer.name }} {{ customer.lastName }}</h2>
     </mat-card-title>
     <mat-card-subtitle>{{ customer.email }}</mat-card-subtitle>
   </mat-card-header>
