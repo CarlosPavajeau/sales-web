@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog'
 import {
   RegisterCustomerPhoneNumberComponent
 } from '../register-customer-phone-number/register-customer-phone-number.component'
+import { RegisterCustomerAddressComponent } from '../register-customer-address/register-customer-address.component'
 
 @Component({
   selector: 'app-customer-detail',
@@ -28,6 +29,21 @@ export class CustomerDetailComponent implements OnInit {
 
   openRegisterPhoneNumberDialog() {
     const dialogRef = this.dialog.open(RegisterCustomerPhoneNumberComponent, {
+      width: '350px',
+      data: {
+        id: this.id
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.customer$ = this.service.fetchById(this.id)
+      }
+    })
+  }
+
+  openRegisterAddressDialog() {
+    const dialogRef = this.dialog.open(RegisterCustomerAddressComponent, {
       width: '350px',
       data: {
         id: this.id

@@ -8,13 +8,18 @@ import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http'
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component'
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { RegisterCustomerAddressComponent } from './components/register-customer-address/register-customer-address.component';
+import { RegisterCustomerPhoneNumberComponent } from './components/register-customer-phone-number/register-customer-phone-number.component';
+import { MatDialogModule } from '@angular/material/dialog'
 
 
 @NgModule({
   declarations: [
     RegisterCustomerComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    RegisterCustomerAddressComponent,
+    RegisterCustomerPhoneNumberComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +29,8 @@ import { MatCardModule } from '@angular/material/card'
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ]
 })
 export class CustomersModule {
