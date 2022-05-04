@@ -21,3 +21,7 @@ body {
   margin-top: 3rem;
   gap: 1rem;
 }
+
+.detail-card {
+  margin: 30px;
+}
