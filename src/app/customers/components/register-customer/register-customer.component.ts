@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { CustomerService } from '../../services/customer.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-register-customer',
@@ -11,7 +12,10 @@ export class RegisterCustomerComponent implements OnInit {
 
   form: FormGroup
 
-  constructor(private service: CustomerService, private builder: FormBuilder) {
+  constructor(
+    private service: CustomerService,
+    private builder: FormBuilder,
+    private router: Router) {
     this.form = builder.group({
       id: ['', [Validators.required]],
       name: ['', [Validators.required]],
@@ -28,7 +32,9 @@ export class RegisterCustomerComponent implements OnInit {
       this.service.save(this.form.value)
         .subscribe((response) => {
           if (response) {
-            this.form.reset()
+            this.router.navigate(['/customers', this.form.get('id')?.value])
+              .then(() => {
+              })
           }
         })
     }
