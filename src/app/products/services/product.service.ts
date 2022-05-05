@@ -14,4 +14,8 @@ export class ProductService {
   save(product: Product) {
     return this.http.post<Product>(`${environment.apiUrl}/products`, product)
   }
+
+  fetchAll() {
+    return this.http.get<Product[]>(`${environment.apiUrl}/products`)
+  }
 }

@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Añadir metodo de pago</h1>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Tipo</mat-label>
+
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Monto</mat-label>
+      <input matInput formControlName="amount" type="number"/>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="undefined">Cancelar</button>
+  <button mat-button mat-raised-button (click)="onSubmit()">Registrar</button>
+</mat-dialog-actions>

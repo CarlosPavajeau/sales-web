@@ -25,3 +25,8 @@ body {
 .detail-card {
   margin: 30px;
 }
+
+.form__divider {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}

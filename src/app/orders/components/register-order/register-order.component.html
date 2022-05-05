@@ -1,1 +1,60 @@
-<p>register-order works!</p>
+<ng-container>
+  <form [formGroup]="form" class="form">
+    <mat-form-field>
+      <mat-label>Cliente</mat-label>
+      <input matInput formControlName="customerId">
+
+      <mat-hint>Digite la identificación del ciente</mat-hint>
+    </mat-form-field>
+
+    <button mat-stroked-button color="primary" (click)="searchClient()">Buscar cliente</button>
+
+    <mat-form-field>
+      <mat-label>Dirección de entrega</mat-label>
+      <mat-select formControlName="deliveryAddressId" [disabled]="addresses.length === 0">
+        <mat-option *ngFor="let address of addresses" [value]="address.id">
+          {{address.state}}, {{address.city}}, {{address.street}} - {{address.zip}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Fecha de entrega</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="deliveredAt">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-divider class="form__divider"></mat-divider>
+
+    <button mat-raised-button color="primary" (click)="openRegisterItemDialog()">Añadir producto</button>
+
+    <section>
+      <p>Productos</p>
+      <ul>
+        <li *ngFor="let item of form.get('items')?.value">
+          {{item.quantity}} x {{item.product.name}} -> {{item.quantity * item.product.price | currency}}
+        </li>
+      </ul>
+    </section>
+
+    <mat-divider class="form__divider"></mat-divider>
+
+    <button mat-raised-button color="primary" (click)="openRegisterPaymentDialog()">Añadir pago</button>
+
+    <section>
+      <p>Métodos de pago</p>
+      <ul>
+        <li *ngFor="let payment of form.get('payments')?.value">
+          {{payment.type}} -> {{payment.amount | currency}}
+        </li>
+      </ul>
+    </section>
+
+    <mat-divider class="form__divider"></mat-divider>
+
+    <button mat-raised-button color="primary" (click)="onSubmit()">Registrar</button>
+  </form>
+</ng-container>
+
+<hr class="form__divider"/>
